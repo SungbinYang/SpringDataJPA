@@ -48,3 +48,45 @@ psql springdata
 쿼리
 SELECT * FROM account;
 ```
+
+## ORM: Object-Relation Mapping
+- JDBC 사용
+
+```java
+try (Connection connection = DriverManager.getConnection(url, username, password);) {
+            System.out.println("Connection created: " + connection);
+//            String sql = "CREATE TABLE ACCOUNT (id int, username varchar(255), password varchar(255));";
+            String sql = "INSERT INTO ACCOUNT VALUES (1, 'sungbin', 'pass');";
+            try (PreparedStatement statement = connection.prepareStatement(sql);) {
+                statement.execute();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+```
+
+- 도메인 모델 사용
+
+```java
+Account account = new Account(“sungbin”, “pass”);
+accountRepository.save(account);
+```
+
+- JDBC 대신 도메인 모델 사용하려는 이유?
+  * 객체 지향 프로그래밍의 장점을 활용하기 좋으니까.
+  * 각종 디자인 패턴
+  * 코드 재사용
+  * 비즈니스 로직 구현 및 테스트 편함.
+
+> ORM은 애플리케이션의 클래스와 SQL 데이터베이스의 테이블 사이의 맵핑 정보를 기술한 메타데이터를 사용하여, 자바 애플리케이션의 객체를 SQL 데이터베이스의 테이블에 자동으로 (또 깨끗하게) 영속화 해주는 기술입니다.
+
+> In a nutshell, object/relational mapping is the automated (and transparent) persistence of objects in a Java application to the tables in an SQL database, using metadata that describes the mapping between the classes of the application and the schema of the SQL database.
+> - Java Persistence with Hibernate, Second Edition
+
+|장점| 단점  |
+|------|-----|
+|생산성| 학습비용 |
+|유지보수성| -   |
+|성능| -   |
+|밴더 독립성| -   |
+
