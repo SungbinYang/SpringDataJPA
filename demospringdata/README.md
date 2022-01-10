@@ -90,3 +90,22 @@ public class Address {
     })
     private Address address;
 ```
+
+## JPA 프로그래밍: 1대다 맵핑
+- 관계에는 항상 두 엔티티가 존재 합니다.
+  * 둘 중 하나는 그 관계의 주인(owning)이고
+  * 다른 쪽은 종속된(non-owning) 쪽입니다.
+  * 해당 관계의 반대쪽 레퍼런스를 가지고 있는 쪽이 주인.
+- 단방향에서의 관계의 주인은 명확합니다.
+  * 관계를 정의한 쪽이 그 관계의 주인입니다.
+- 단방향 @ManyToOne
+  * 기본값은 FK 생성
+- 단방향 @OneToMany
+  * 기본값은 조인 테이블 생성
+- 양방향
+  * FK 가지고 있는 쪽이 오너 따라서 기본값은 @ManyToOne 가지고 있는 쪽이 주인.
+  * 주인이 아닌쪽(@OneToMany쪽)에서 mappedBy 사용해서 관계를 맺고 있는 필드를 설정해야 합니다.
+- 양방향
+  * @ManyToOne (이쪽이 주인)
+  * @OneToMany(mappedBy)
+  * 주인한테 관계를 설정해야 DB에 반영이 됩니다.
