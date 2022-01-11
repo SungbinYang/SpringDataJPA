@@ -120,3 +120,8 @@ public class Address {
   * Removed: JPA가 관리하긴 하지만 삭제하기로 한 상태.
 
 ![](./img01.png)
+
+## JPA 프로그래밍: Fetch
+- 연관 관계의 엔티티를 어떻게 가져올 것이냐... 지금 (Eager)? 나중에(Lazy)?
+  * @OneToMany의 기본값은 Lazy
+  * @ManyToOne의 기본값은 Eager

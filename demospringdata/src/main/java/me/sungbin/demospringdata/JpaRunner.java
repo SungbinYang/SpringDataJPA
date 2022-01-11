@@ -54,7 +54,20 @@ public class JpaRunner implements ApplicationRunner {
 
         Session session = entityManager.unwrap(Session.class);
         Post post = session.get(Post.class, 1L);
+//        Comment comment = session.get(Comment.class, 2L);
 
-        session.delete(post);
+        System.out.println("=======================================");
+        System.out.println(post.getTitle());
+
+        // n+1문제를 기대했지만 결과는 코멘트 셀렉트 쿼리 1번만 호출
+        // 데이터가 많을경우 비효울적이겠지만 n+1이 안 날라옴
+        // hibernate가 똑똑해졌네..
+        post.getComments().forEach(c -> {
+            System.out.println("---------------------------------");
+            System.out.println(c.getComment());
+        });
+//        System.out.println(comment.getComment());
+//        System.out.println(comment.getPost().getTitle());
+//        session.save(post);
     }
 }
