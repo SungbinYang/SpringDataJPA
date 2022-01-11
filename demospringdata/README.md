@@ -159,3 +159,13 @@ public class Address {
                   .createNativeQuery("SELECT * FROM Post", Post.class)
                   .getResultList();
   ```
+
+## 스프링 데이터 JPA 소개 및 원리
+- JpaRepository<Entity, Id> 인터페이스
+  * 매직 인터페이스
+  * @Repository가 없어도 빈으로 등록해 줌.
+- @EnableJpaRepositories
+  * 매직의 시작은 여기서 부터
+- 매직은 어떻게 이뤄지나?
+  * 시작은 @Import(JpaRepositoriesRegistrar.class)
+  * 핵심은 ImportBeanDefinitionRegistrar 인터페이스
