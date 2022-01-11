@@ -109,3 +109,14 @@ public class Address {
   * @ManyToOne (이쪽이 주인)
   * @OneToMany(mappedBy)
   * 주인한테 관계를 설정해야 DB에 반영이 됩니다.
+
+## JPA 프로그래밍: Cascade
+- 엔티티의 상태 변화를 전파 시키는 옵션.
+- 잠깐? 엔티티의 상태가 뭐지?
+  * Transient: JPA가 모르는 상태
+  * Persistent: JPA가 관리중인 상태 (1차 캐시, Dirty Checking, Write Behind, ...)
+    * Dirty Checking (객체의 변경사항을 계속해서 감지) and Write Behind (객체의 상태변화를 DB에 최대한 필요한 시점에 늦게 반영)
+  * Detached: JPA가 더이상 관리하지 않는 상태.
+  * Removed: JPA가 관리하긴 하지만 삭제하기로 한 상태.
+
+![](./img01.png)
