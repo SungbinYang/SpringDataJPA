@@ -9,3 +9,4 @@
 - JPA 프로그래밍: 관계 맵핑
 - JPA 프로그래밍: 엔티티 상태와 Cascade
 - JPA 프로그래밍: Fetch
+- JPA 프로그래밍: Query
