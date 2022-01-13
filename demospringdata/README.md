@@ -192,3 +192,7 @@ public class Address {
 |스프링 데이터 JPA|스프링 데이터 Common이 제공하는 기능에 JPA 관련 기능 추가.|
 
 http://projects.spring.io/spring-data/
+
+## 스프링 데이터 Common: Repository
+
+![](./img03.png)
