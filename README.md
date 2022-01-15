@@ -18,3 +18,4 @@
 - 스프링 데이터 JPA 활용파트 소개
 - 스프링 데이터 Common. 레파지토리
 - 스프링 데이터 Common: Repository 인터페이스 정의하기
+- 스프링 데이터 Common: Null 처리하기
