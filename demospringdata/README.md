@@ -196,3 +196,31 @@ http://projects.spring.io/spring-data/
 ## 스프링 데이터 Common: Repository
 
 ![](./img03.png)
+
+## 스프링 데이터 Common: Repository 인터페이스 정의하기
+- Repository 인터페이스로 공개할 메소드를 직접 일일히 정의하고 싶다면
+- 특정 리포지토리 당
+  * @RepositoryDefinition
+  
+  ```java
+  @RepositoryDefinition(domainClass = Comment.class, idClass = Long.class)
+  public interface CommentRepository {
+  
+      Comment save(Comment comment);
+  
+      List<Comment> findAll();
+  }
+  ```
+  
+  * 공통 인터페이스 정의
+
+  ```java
+  @NoRepositoryBean
+  public interface MyRepository<T, ID extends Serializable> extends Repository<T, ID> {
+  
+      <E extends T> E save(E entity);
+  
+      List<T> findAll();
+  
+  }
+  ```
