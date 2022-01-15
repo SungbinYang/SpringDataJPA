@@ -19,3 +19,4 @@
 - 스프링 데이터 Common. 레파지토리
 - 스프링 데이터 Common: Repository 인터페이스 정의하기
 - 스프링 데이터 Common: Null 처리하기
+- 스프링 데이터 Common: 쿼리 만들기 개요

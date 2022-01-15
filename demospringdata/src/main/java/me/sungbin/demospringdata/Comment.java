@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -20,4 +21,8 @@ public class Comment {
 
     @ManyToOne
     private Post post;
+
+    private Date created;
+
+    private Integer likeCount;
 }

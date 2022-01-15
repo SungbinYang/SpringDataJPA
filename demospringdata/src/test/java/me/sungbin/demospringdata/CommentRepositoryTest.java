@@ -32,4 +32,9 @@ class CommentRepositoryTest {
         Optional<Comment> byId = commentRepository.findById(100L);
         assertThat(byId).isEmpty();
     }
+
+    @Test
+    void query_테스트() {
+
+    }
 }
