@@ -52,3 +52,18 @@ public class SimpleMyRepository<T, ID extends Serializable> extends SimpleJpaRep
 public interface PostRepository extends MyRepository<Post, Long> {
 }
 ```
+
+## 스프링 데이터 Common: 도메인 이벤트
+- 도메인 관련 이벤트를 발생시키기
+- 스프링 프레임워크의 이벤트 관련 기능
+    * https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#context-functionality-events
+    * ApplicationContext extends ApplicationEventPublisher
+    * 이벤트: extends ApplicationEvent
+    * 리스너
+        * implements ApplicationListener<E extends ApplicationEvent>
+        * @EventListener
+- 스프링 데이터의 도메인 이벤트 Publisher
+    * @DomainEvents
+    * @AfterDomainEventPublication
+    * extends AbstractAggregateRoot<E>
+    * 현재는 save() 할 때만 발생 합니다.
