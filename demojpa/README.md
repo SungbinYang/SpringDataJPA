@@ -67,3 +67,56 @@ public interface PostRepository extends MyRepository<Post, Long> {
     * @AfterDomainEventPublication
     * extends AbstractAggregateRoot<E>
     * 현재는 save() 할 때만 발생 합니다.
+
+## 스프링 데이터 Common: QueryDSL
+- findByFirstNameIngoreCaseAndLastNameStartsWithIgnoreCase(String firstName, String lastName) 
+- 이런 복잡하고 긴 쿼리메소드를 어떻게하면 간단하게 할까?
+- 여러 쿼리 메소드는 대부분 두 가지 중 하나
+    * Optional<T> findOne(Predicate): 이런 저런 조건으로 무언가 하나를 찾는다.
+    * List<T>|Page<T>|.. findAll(Predicate): 이런 저런 조건으로 무언가 여러개를 찾는다.
+    * [QuerydslPredicateExecutor 인터페이스](https://docs.spring.io/spring-data/commons/docs/current/api/org/springframework/data/querydsl/QuerydslPredicateExecutor.html)
+- QueryDSL
+    * http://www.querydsl.com/
+    * 타입 세이프한 쿼리 만들 수 있게 도와주는 라이브러리
+    * JPA, SQL, MongoDB, JDO, Lucene, Collection 지원
+    * [QueryDSL JPA 연동 가이드](http://querydsl.com/static/querydsl/4.1.3/reference/html_single/#jpa_integration)
+- 스프링 데이터 JPA + QueryDSL
+    * 인터페이스: QuerydslPredicateExecutor<T>
+    * 구현체: QuerydslPredicateExecutor<T> (@deprecated되었고 구현체를 제공하는 방식이 프레그먼트를 사용하도록 바뀌어서 SimpleRepository만 사용해도 가능)
+- 연동 방법
+    * 기본 리포지토리 커스터마이징 안 했을 때. 
+    * 기본 리포지토리 커스타마이징 했을 때.
+- 의존성 추가
+
+```xml
+<dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+        </dependency>
+
+<plugin>
+<groupId>com.mysema.maven</groupId>
+<artifactId>apt-maven-plugin</artifactId>
+<version>1.1.3</version>
+<executions>
+    <execution>
+        <goals>
+            <goal>process</goal>
+        </goals>
+        <configuration>
+            <outputDirectory>target/generated-sources/java</outputDirectory>
+            <processor>com.querydsl.apt.jpa.JPAAnnotationProcessor</processor>
+        </configuration>
+    </execution>
+</executions>
+</plugin>
+```
+
+```java
+public interface AccountRepository extends JpaRepository<Account, Long>, QuerydslPredicateExecutor<Account> {
+}
+```
