@@ -16,10 +16,10 @@ class PostRepositoryTest {
     void crud_테스트() {
         Post post = new Post();
         post.setTitle("hibernate");
+        assertFalse(postRepository.contains(post));
 
         postRepository.save(post);
-
-        postRepository.findMyPost();
+        assertTrue(postRepository.contains(post));
 
         postRepository.delete(post);
         postRepository.flush();

@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 @Transactional
 @RequiredArgsConstructor
-public class PostCustomRepositoryDefault implements PostCustomRepository<Post> {
+public class PostCustomRepositoryImpl implements PostCustomRepository<Post> {
 
     private final EntityManager entityManager;
 
