@@ -26,3 +26,4 @@
 - 스프링 데이터 Common: 기본 리포지토리 커스터마이징
 - 스프링 데이터 Common: 도메인 이벤트
 - 스프링 데이터 Common: QueryDSL
+- QueryDSL 보강
