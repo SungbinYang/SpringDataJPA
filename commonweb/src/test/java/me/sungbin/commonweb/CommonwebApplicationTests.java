@@ -1,10 +1,10 @@
-package me.sungbin.demojpa;
+package me.sungbin.commonweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class DemojpaApplicationTests {
+class CommonwebApplicationTests {
 
     @Test
     void contextLoads() {

@@ -1,24 +1,21 @@
 package me.sungbin.demojpa.post;
 
 import com.querydsl.core.types.Predicate;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@RunWith(SpringRunner.class)
 @DataJpaTest
 @Import({PostRepositoryTestConfig.class})
-public class PostRepositoryTest {
+class PostRepositoryTest {
 
     @Autowired
     PostRepository postRepository;
@@ -27,7 +24,7 @@ public class PostRepositoryTest {
     ApplicationContext applicationContext;
 
     @Test
-    public void crud() {
+    void crud() {
         Post post = new Post();
         post.setTitle("hibernate");
         assertFalse(postRepository.contains(post));
