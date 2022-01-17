@@ -31,3 +31,4 @@
 - 스프링 데이터 Common: Web 2부: DomainClassConverter
 - 스프링 데이터 Common: Web 3부: Pageable과 Sort 매개변수
 - 스프링 데이터 Common: Web 4부: HATEOAS
+- 스프링 데이터 Common: 마무리
