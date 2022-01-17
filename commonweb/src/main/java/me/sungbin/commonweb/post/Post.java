@@ -17,5 +17,5 @@ public class Post {
     private String title;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Date created;
+    private Date created = new Date();
 }
