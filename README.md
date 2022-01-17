@@ -27,3 +27,4 @@
 - 스프링 데이터 Common: 도메인 이벤트
 - 스프링 데이터 Common: QueryDSL
 - QueryDSL 보강
+- 스프링 데이터 Common: Web 1부: 웹 지원 기능 소개
