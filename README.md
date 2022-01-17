@@ -30,3 +30,4 @@
 - 스프링 데이터 Common: Web 1부: 웹 지원 기능 소개
 - 스프링 데이터 Common: Web 2부: DomainClassConverter
 - 스프링 데이터 Common: Web 3부: Pageable과 Sort 매개변수
+- 스프링 데이터 Common: Web 4부: HATEOAS
