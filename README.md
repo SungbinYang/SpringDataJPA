@@ -33,3 +33,4 @@
 - 스프링 데이터 Common: Web 4부: HATEOAS
 - 스프링 데이터 Common: 마무리
 - 스프링 데이터 JPA: JPA Repository
+- 스프링 데이터 JPA: 엔티티 저장하기

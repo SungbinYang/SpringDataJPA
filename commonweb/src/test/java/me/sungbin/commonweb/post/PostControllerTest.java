@@ -47,8 +47,8 @@ class PostControllerTest {
                         .param("sort", "created,desc")
                         .param("sort", "title"))
                 .andDo(print())
-                .andExpect(status().isOk());
-//                .andExpect(jsonPath("$.content[0].title", is("jpa")));
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("_embedded.postList[0].title", is("jpa")));
     }
 
     private void createPosts() {
