@@ -48,6 +48,8 @@ class PostControllerTest {
                         .param("sort", "title"))
                 .andDo(print())
                 .andExpect(status().isOk())
+                .andExpect(jsonPath("_embedded").exists())
+                .andExpect(jsonPath("_embedded.postList[0]").exists())
                 .andExpect(jsonPath("_embedded.postList[0].title", is("jpa")));
     }
 
