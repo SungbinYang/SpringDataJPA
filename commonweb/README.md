@@ -192,3 +192,22 @@
   * Sort는 그 안에서 사용한 프로퍼티 또는 alias가 엔티티에 없는 경우에는 예외가 발생합니다.
   * JpaSort.unsafe()를 사용하면 함수 호출을 할 수 있습니다.
     * JpaSort.unsafe(“LENGTH(firstname)”);
+
+## 스프링 데이터 JPA: Named Parameter과 SpEL
+- Named Parameter
+  * @Query에서 참조하는 매개변수를 ?1, ?2 이렇게 채번으로 참조하는게 아니라 이름으로 :title 이렇게 참조하는 방법은 다음과 같습니다.
+  
+  ```java
+  @Query("SELECT p FROM Post AS p WHERE p.title = :title")
+  List<Post> findByTitle(@Param("title") String title, Sort sort);
+  ```
+
+- SpEL
+  * 스프링 표현 언어
+  * https://docs.spring.io/spring/docs/current/spring-framework-reference/core.html#expressions
+  * @Query에서 엔티티 이름을 #{#entityName} 으로 표현할 수 있습니다.
+  
+  ```java
+  @Query("SELECT p FROM #{#entityName} AS p WHERE p.title = :title")
+  List<Post> findByTitle(@Param("title") String title, Sort sort);
+  ```
