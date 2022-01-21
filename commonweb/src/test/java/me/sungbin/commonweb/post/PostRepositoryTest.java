@@ -53,4 +53,26 @@ class PostRepositoryTest {
         List<Post> all = postRepository.findAll(); // select
         assertEquals(1, all.size());
     }
+
+    @Test
+    void findByTitleStartsWith_테스트() {
+        savePost();
+
+        List<Post> all = postRepository.findByTitleStartingWith("Spring");
+        assertEquals(1, all.size());
+    }
+
+    @Test
+    void findByTitle_테스트() {
+        savePost();
+
+        List<Post> all = postRepository.findByTitle("Spring");
+        assertEquals(1, all.size());
+    }
+
+    private void savePost() {
+        Post post = new Post();
+        post.setTitle("Spring");
+        Post savedPost = postRepository.save(post);
+    }
 }
