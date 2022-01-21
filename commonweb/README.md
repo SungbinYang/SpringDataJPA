@@ -227,3 +227,13 @@
   @Query("UPDATE Post p SET p.title = ?2 WHERE p.id = ?1")
   int updateTitle(Long id, String title);
   ```
+
+## 스프링 데이터 JPA: EntityGraph
+- 쿼리 메소드 마다 연관 관계의 Fetch 모드를 설정 할 수 있습니다.
+- @NamedEntityGraph
+  * @Entity에서 재사용할 여러 엔티티 그룹을 정의할 때 사용.
+- @EntityGraph
+  * @NamedEntityGraph에 정의되어 있는 엔티티 그룹을 사용 함.
+  * 그래프 타입 설정 가능
+    * (기본값) FETCH: 설정한 엔티티 애트리뷰트는 EAGER 패치 나머지는 LAZY 패치.
+    * LOAD: 설정한 엔티티 애트리뷰트는 EAGER 패치 나머지는 기본 패치 전략 따름.
