@@ -44,6 +44,8 @@ class PostRepositoryTest {
         postUpdate.setTitle("hibernate");
         Post updatePost = postRepository.save(postUpdate);// update (merge)
 
+        updatePost.setTitle("sungbin");
+
         assertTrue(entityManager.contains(updatePost));
         assertFalse(entityManager.contains(postUpdate));
         assertNotEquals(updatePost, postUpdate);
