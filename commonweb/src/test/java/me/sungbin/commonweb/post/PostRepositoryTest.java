@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.JpaSort;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -75,9 +76,19 @@ class PostRepositoryTest {
         assertEquals(1, other.size());
     }
 
-    private void savePost() {
+    @Test
+    void updateTitle_테스트() {
+        Post spring = savePost();
+        int update = postRepository.updateTitle("hibernate", spring.getId());
+        assertEquals(1, update);
+
+        Optional<Post> byId = postRepository.findById(spring.getId()); // select query가 나타나지 않 :: 1차캐시로 인하여
+        assertEquals("hibernate", byId.get().getTitle());
+    }
+
+    private Post savePost() {
         Post post = new Post();
         post.setTitle("Spring");
-        Post savedPost = postRepository.save(post);
+        return postRepository.save(post);
     }
 }

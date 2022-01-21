@@ -37,3 +37,4 @@
 - 스프링 데이터 JPA: 쿼리 메소드
 - 스프링 데이터 JPA: 쿼리 메소드 Sort
 - 스프링 데이터 JPA: Named Parameter과 SpEL
+- 스프링 데이터 JPA: Update 쿼리 메소드

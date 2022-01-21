@@ -211,3 +211,19 @@
   @Query("SELECT p FROM #{#entityName} AS p WHERE p.title = :title")
   List<Post> findByTitle(@Param("title") String title, Sort sort);
   ```
+
+## 스프링 데이터 JPA: Update 쿼리 메소드
+- 쿼리 생성하기
+  * find...
+  * count...
+  * delete...
+  * 흠.. update는 어떻게 하지?
+- Update 또는 Delete 쿼리 직접 정의하기
+  * @Modifying @Query
+  * 추천하진 않습니다.
+
+  ```java
+  @Modifying(clearAutomatically = true, flushAutomatically = true)
+  @Query("UPDATE Post p SET p.title = ?2 WHERE p.id = ?1")
+  int updateTitle(Long id, String title);
+  ```
