@@ -3,6 +3,8 @@ package me.sungbin.commonweb.post;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.JpaSort;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -66,8 +68,11 @@ class PostRepositoryTest {
     void findByTitle_테스트() {
         savePost();
 
-        List<Post> all = postRepository.findByTitle("Spring");
+        List<Post> all = postRepository.findByTitle("Spring", Sort.by("title"));
         assertEquals(1, all.size());
+
+        List<Post> other = postRepository.findByTitle("Spring", JpaSort.unsafe("LENGTH(title)"));
+        assertEquals(1, other.size());
     }
 
     private void savePost() {
