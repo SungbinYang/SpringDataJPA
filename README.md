@@ -40,3 +40,4 @@
 - 스프링 데이터 JPA: Update 쿼리 메소드
 - 스프링 데이터 JPA: EntityGraph
 - 스프링 데이터 JPA: Projection
+- 스프링 데이터 JPA: Specifications

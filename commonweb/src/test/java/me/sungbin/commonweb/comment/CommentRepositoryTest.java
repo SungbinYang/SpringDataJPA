@@ -5,6 +5,10 @@ import me.sungbin.commonweb.post.PostRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.PageRequest;
+
+import static me.sungbin.commonweb.comment.CommentSpecs.isBest;
+import static me.sungbin.commonweb.comment.CommentSpecs.isGood;
 
 @DataJpaTest
 class CommentRepositoryTest {
@@ -41,5 +45,10 @@ class CommentRepositoryTest {
             System.out.println("========================");
             System.out.println(c.getComment());
         });
+    }
+
+    @Test
+    void specification_테스트() {
+        commentRepository.findAll(isBest().or(isGood()), PageRequest.of(0, 10));
     }
 }
