@@ -5,6 +5,8 @@ import me.sungbin.commonweb.post.PostRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.PageRequest;
 
 import static me.sungbin.commonweb.comment.CommentSpecs.isBest;
@@ -50,5 +52,17 @@ class CommentRepositoryTest {
     @Test
     void specification_테스트() {
         commentRepository.findAll(isBest().or(isGood()), PageRequest.of(0, 10));
+    }
+
+    @Test
+    void query_by_example_테스트() {
+        Comment prove = new Comment();
+        prove.setBest(true); // prove
+
+        ExampleMatcher exampleMatcher = ExampleMatcher.matchingAny().withIgnorePaths("up", "down");
+
+        Example<Comment> example = Example.of(prove, exampleMatcher);
+
+        commentRepository.findAll(example);
     }
 }
