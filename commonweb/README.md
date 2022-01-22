@@ -366,3 +366,5 @@ public interface CommentRepository extends JpaRepository<Comment, Long>, JpaSpec
   * @PrePersist
   * @PreUpdate
   * ....
+
+## 스프링 데이터 JPA: 마무리
