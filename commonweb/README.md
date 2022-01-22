@@ -327,3 +327,11 @@ public interface CommentRepository extends JpaRepository<Comment, Long>, JpaSpec
   * 조건이 제한적이다. 문자열은 starts/contains/ends/regex 가 가능하고 그밖에 property는 값이 정확히 일치해야 한다.
 - QueryByExampleExecutor
   * https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#query-by-example
+
+## 스프링 데이터 JPA: 트랜잭션
+- 스프링 데이터 JPA가 제공하는 Repository의 모든 메소드에는 기본적으로 @Transaction이 적용되어 있습니다.
+- 스프링 @Transactional
+  * 클래스, 인터페이스, 메소드에 사용할 수 있으며, 메소드에 가장 가까운 애노테이션이 우선 순위가 높다.
+  * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/Transactional.html (반드시 읽어볼 것, 그래야 뭘 설정해서 쓸 수 있는지 알죠..)
+- JPA 구현체로 Hibernate를 사용할 때 트랜잭션을 readOnly를 사용하면 좋은 점
+  * Flush 모드를 NEVER로 설정하여, Dirty checking을 하지 않도록 한다.
