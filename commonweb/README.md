@@ -335,3 +335,34 @@ public interface CommentRepository extends JpaRepository<Comment, Long>, JpaSpec
   * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/transaction/annotation/Transactional.html (반드시 읽어볼 것, 그래야 뭘 설정해서 쓸 수 있는지 알죠..)
 - JPA 구현체로 Hibernate를 사용할 때 트랜잭션을 readOnly를 사용하면 좋은 점
   * Flush 모드를 NEVER로 설정하여, Dirty checking을 하지 않도록 한다.
+
+## 스프링 데이터 JPA: Auditing
+- 스프링 데이터 JPA의 Auditing
+
+  ```java
+      @CreatedDate
+      private Date created;
+  
+      @LastModifiedDate
+      private Date updated;
+  
+      @CreatedBy
+      @ManyToOne
+      private Account createdBy;
+  
+      @LastModifiedBy
+      @ManyToOne
+      private Account updatedBy;
+  ```
+
+- 엔티티의 변경 시점에 언제, 누가 변경했는지에 대한 정보를 기록하는 기능.
+- 아쉽지만 이 기능은 스프링 부트가 자동 설정 해주지 않습니다.
+  * 메인 애플리케이션 위에 @EnableJpaAuditing 추가
+  * 엔티티 클래스 위에 @EntityListeners(AuditingEntityListener.class) 추가
+  * AuditorAware 구현체 만들기
+  * @EnableJpaAuditing에 AuditorAware 빈 이름 설정하기.
+- JPA의 라이프 사이클 이벤트
+  * https://docs.jboss.org/hibernate/orm/4.0/hem/en-US/html/listeners.html
+  * @PrePersist
+  * @PreUpdate
+  * ....

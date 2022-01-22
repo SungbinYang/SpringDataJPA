@@ -43,3 +43,4 @@
 - 스프링 데이터 JPA: Specifications
 - 스프링 데이터 JPA: Query by Example
 - 스프링 데이터 JPA: 트랜잭션
+- 스프링 데이터 JPA: Auditing
